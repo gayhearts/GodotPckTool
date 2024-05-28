@@ -14,6 +14,8 @@ in
 
 	  makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
 	  enableParallelBuilding = true;
+	  dontUseCmakeConfigure = true;
+	  dontUseCmakeBuildDir = true;
 
 	  nativeBuildInputs = [
 	  	clang
@@ -21,10 +23,10 @@ in
 	  ];
 
 	  postInstall = ''
-	    mkdir -p $out/bin
-		cp src/godotpcktool $out/bin/godotpcktool
-		chmod +x $out/bin/godotpcktool
+		install -Dm755 -t $out/bin build/src/godotpcktool
 	  '';
+
+	  outputs = [ "out" ];
 
 	  meta = with lib; {
 		homepage = "https://github.com/gayhearts/godotpcktool";

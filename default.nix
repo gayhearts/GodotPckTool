@@ -21,7 +21,8 @@ in
 	  ];
 
 	  installPhase = ''
-		install -D /build/GodotPckTool/build/src/godotpcktool $out/bin/godotpcktool
+	    mkdir -p $out/bin
+		cp src/godotpcktool $out/bin/
 	  '';
 
 	  meta = with lib; {

@@ -20,9 +20,10 @@ in
 		cmake
 	  ];
 
-	  installPhase = ''
+	  postInstall = ''
 	    mkdir -p $out/bin
-		cp src/godotpcktool $out/bin/
+		cp src/godotpcktool $out/bin/godotpcktool
+		chmod +x $out/bin/godotpcktool
 	  '';
 
 	  meta = with lib; {
